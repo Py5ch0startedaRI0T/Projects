@@ -17,9 +17,6 @@
     h1, h2 {
       text-align: center;
     }
-    #loginPage, #marketplace {
-      display: none;
-    }
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -78,34 +75,31 @@
       background: rgba(0,0,0,0.4);
       z-index: 5;
     }
-    .chat-box, .bid-box {
-      margin-top: 1rem;
-    }
-    .chat-box textarea {
-      width: 100%;
-      resize: none;
-    }
-    .delete-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: red;
-      color: white;
-      border: none;
-      padding: 0.2rem 0.4rem;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
   </style>
+
+  <!-- ✅ Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyC4yNgUD6IIvZde0dXelLwTZn7X51VgqX8",
+      authDomain: "classtrade-de0e1.firebaseapp.com",
+      databaseURL: "https://classtrade-de0e1-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "classtrade-de0e1",
+      storageBucket: "classtrade-de0e1.appspot.com",
+      messagingSenderId: "582168987739",
+      appId: "1:582168987739:web:290e4dc87bc7c430e2d77e",
+      measurementId: "G-3H1MRL9431"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+  </script>
 </head>
 <body>
 
-<!-- LOGIN PAGE -->
+<!-- ✅ Login Page -->
 <div class="container" id="loginPage">
   <h1>📦 ClassTrade</h1>
   <p>Enter your name and class to begin.</p>
@@ -122,8 +116,9 @@
   <button onclick="login()">Enter Marketplace</button>
 </div>
 
+
 <!-- MARKETPLACE PAGE -->
-<div class="container" id="marketplace">
+<div class="container" id="marketplace" style="display: none;">
   <div class="topbar">
     <h2>Welcome, <span id="usernameDisplay"></span> (<span id="userclassDisplay"></span>)</h2>
     <div>
